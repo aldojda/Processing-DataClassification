@@ -12,8 +12,25 @@ def main():
         return aprox_pi, x, y, mask
 
     st.title('Aproximación de π usando el Método de Monte Carlo')
+
+
+    st.write("""
+### Explicación del Método
+La idea básica es que:
+
+$$
+\\frac{\\pi r^2}{4 r^2} \\approx \\frac{\\text{número de puntos dentro del círculo}}{\\text{número de puntos dentro del cuadrado}}
+$$
+
+Por lo tanto,
+
+$$
+\\pi \\approx 4 \\frac{\\text{número de puntos dentro del círculo}}{\\text{número de puntos dentro del cuadrado}}
+$$
+""")
+
     # Entradas del usuario
-    num_simulations = st.slider('Número de Simulaciones', 100, 1000000, 10000)
+    num_simulations = st.slider('Número de Simulaciones', 10, 100000, 100)
 
     # Cálculo de π
     aprox_pi, x, y, mask = calculate_pi(num_simulations)
