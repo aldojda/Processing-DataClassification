@@ -32,7 +32,7 @@ $$
     # Entradas del usuario
     num_simulations = st.slider('Número de Simulaciones', 10, 100000, 100)
 
-    # Cálculo de π
+    # Cálculo de pi
     aprox_pi, x, y, mask = calculate_pi(num_simulations)
 
     # Mostrar resultado
