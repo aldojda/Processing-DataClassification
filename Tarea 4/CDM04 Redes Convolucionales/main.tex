@@ -1,0 +1,90 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc} % Para poder escribir caracteres especiales
+\usepackage[spanish]{babel} % Para configurar el idioma en español
+\usepackage{graphicx} % Para incluir gráficos
+\usepackage{amsmath} % Para ecuaciones matemáticas
+\usepackage{hyperref} % Para enlaces y referencias
+\usepackage{geometry} % Para definir márgenes
+\geometry{margin=1in} % Márgenes de 1 pulgada
+\usepackage{subcaption} % Para las subfiguras
+\usepackage{caption}
+\title{Tarea 4:  Diseño de Experimento para Redes Convolucionales para Clasificador de números}
+\author{Aldo Daniel Ojeda Rodriguez}
+\date{17 Julio 2024}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+%--------------------
+    % Resumen de la tarea. Aquí describes brevemente el propósito y los principales hallazgos de tu trabajo.
+ %--------------------
+ Se generó un diseño de experimentos  para distintas configuraciones de capas ocultas y nodos de una red convolucional poder determinar cuando el beneficio es mínimo al aumentar la complejidad de la red para el conjunto de datos minist.
+\end{abstract}
+
+\section{Introducción}
+
+Las redes neuronales convolucionales (CNN) son un tipo de red neuronal especializada en el procesamiento de datos con estructuras en forma de cuadrícula, como imágenes. Utilizan capas convolucionales para extraer características, seguidas de capas de agrupamiento que reducen la dimensionalidad de los datos y capas totalmente conectadas para la clasificación final. Las CNN son ampliamente utilizadas en tareas de visión artificial, como reconocimiento de imágenes y objetos, debido a su capacidad para identificar patrones y características complejas\cite{IBM_CNN}.
+
+El conjunto de datos MNIST es una base de datos ampliamente utilizada en el aprendizaje automático, especialmente en el reconocimiento de imágenes. Contiene 60,000 imágenes de entrenamiento y 10,000 imágenes de prueba de dígitos escritos a mano, del 0 al 9. Cada imagen es en escala de grises y tiene una resolución de 28x28 píxeles. 
+Se utilizará este conjunto de datos para realizar el siguiente experimento.
+
+
+\section{Metodología}
+
+En este diseño de experimentos, se están probando diferentes configuraciones de una red neuronal para optimizar su rendimiento siendo los hiperparametros a optimizar los sigueintes: 
+
+\begin{itemize}
+    \item \textbf{Número de capas ocultas}: 1, 2, 3.
+    \item \textbf{Número de unidades por capa}: 16, 32, 64, 128, 256.
+    \item \textbf{Tasa de deserción (dropout)}: 0.2.
+\end{itemize}
+
+\section{Resultados y Discusión de Resultados}
+
+A continuación se presentan los resultados de precisión, recall y f1-score para cada configuración evaluada, junto con la precisión general del modelo:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Configuración & Capas & Unidades & Exactitud & F1-score \\ \hline
+1             & 1     & 16       & 0.9290    & 0.9288   \\ \hline
+2             & 1     & 32       & 0.9554    & 0.9553   \\ \hline
+3             & 1     & 64       & 0.9707    & 0.9707   \\ \hline
+4             & 1     & 128      & 0.9743    & 0.9743   \\ \hline
+5             & 1     & 256      & 0.9777    & 0.9777   \\ \hline
+6             & 2     & 16       & 0.9226    & 0.9224   \\ \hline
+7             & 2     & 32       & 0.9527    & 0.9526   \\ \hline
+8             & 2     & 64       & 0.9679    & 0.9679   \\ \hline
+9             & 2     & 128      & 0.9678    & 0.9677   \\ \hline
+10            & 2     & 256      & 0.9716    & 0.9716   \\ \hline
+11            & 3     & 16       & 0.9247    & 0.9247   \\ \hline
+12            & 3     & 32       & 0.9530    & 0.9530   \\ \hline
+13            & 3     & 64       & 0.9614    & 0.9613   \\ \hline
+14            & 3     & 128      & 0.9697    & 0.9697   \\ \hline
+15            & 3     & 256      & 0.9741    & 0.9741   \\ \hline
+\end{tabular}
+\caption{Resultados de las configuraciones de redes neuronales}
+\label{tabla:resultados}
+\end{table}
+
+Deacuerdo con la tabla \ref{tabla:resultados}observamos varias configuraciones de redes neuronales. La Configuración 15 (3 capas, 256 nodos) logró el mejor rendimiento con una exactitud y F1-score de 0.9741, siendo la configuración óptima sin embargo,  partir de la Configuración 3 (1 capa, 64 nodos), las mejoras en las métricas son marginales, lo que sugiere que aumentar el número de capas y unidades más allá de este punto no proporciona beneficios significativos adicionales en el rendimiento del modelo.
+
+\subsection{Conclusión}
+El conjunto de datos de minist de números entre 0 al 9 permitió generar el experimento anterior del cual se concluye lo siguiente: No siempre aumentar la cantidad de capas ocultas genera un mayor beneficio en las redes neuronales, por otro lado, si aumenta tanto el costo computacional lo cual se traduce en tiempo de procesamiento.
+
+\section{Referencias}
+ %   Lista de las referencias bibliográficas utilizadas en tu trabajo. Puedes utilizar el siguiente formato para las referencias en formato BibTeX.
+
+\begin{thebibliography}{9}
+    \bibitem{IBM_CNN}
+    IBM. (2023). ¿Qué son las redes neuronales convolucionales? Recuperado el 12 de julio de 2024, de https://www.ibm.com/mx-es/topics/convolutional-neural-networks
+
+    
+\end{thebibliography}
+
+
+\end{document}
