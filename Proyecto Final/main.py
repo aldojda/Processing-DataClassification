@@ -109,10 +109,11 @@ def main():
     # desplegamos los resultados de las 5 materias mas comunes 
     st.header(f"Así es cómo los alumnos de la {selected_category} se sienten a lo largo de los años")
     tabla_anio(datos_f)
+    st.write(f"curioso como el porcentaje de sentimientos positivos baja por culpa de la pandemia")
 
     st.header(f"estas fueron las calificaciones de las materias más comentadas de {selected_category}")
     st.dataframe( tabla_materias(datos_f))
-    
+
     st.write(f"aqui puedes observar los datos por si tienes curiosidad de lo que dicen los usuarios!")
     st.dataframe( datos_positivos)
 
